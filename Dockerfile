@@ -8,7 +8,7 @@ RUN apt-get update && \
 
 RUN git clone https://github.com/tdlib/td.git && \
     cd td && \
-    git checkout v1.6.0 && \
+    git checkout v1.7.0 && \
     mkdir build && \
     cd build && \
     cmake -DCMAKE_BUILD_TYPE=Release .. && \
