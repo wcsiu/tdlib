@@ -1,4 +1,4 @@
-FROM amd64/ubuntu:18.04 AS base
+FROM buildpack-deps:buster-scm
 
 WORKDIR /
 
