@@ -1,6 +1,9 @@
 # wcsiu/tdlib
-<img src="https://telegram.org/img/t_logo.svg?1"
-     alt="Telegram icon"/>
+[![DockerHub](https://img.shields.io/docker/cloud/automated/wcsiu/tdlib)](https://hub.docker.com/r/wcsiu/tdlib/)
+[![DockerHub](https://img.shields.io/docker/cloud/build/wcsiu/tdlib)](https://hub.docker.com/r/wcsiu/tdlib/builds)
+
+<div><img src="https://telegram.org/img/t_logo.svg?1"
+     alt="Telegram icon"/></div>
 
 
 `wcsiu/tdlib` contains Telegram TDLib and all the required dependencies.
