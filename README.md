@@ -12,9 +12,11 @@
 https://hub.docker.com/r/wcsiu/tdlib
 
 # Shared Tags
-* [`1.7.0`, `1.7`, `1`, `latest`][1.7-Dockerfile]
-* [`1.7.0-buster`, `1.7-buster`, `1-buster`, `buster`][1.7-Dockerfile]
-* [`1.7.0-alpine`, `1.7-alpine `, `1-alpine `, `alpine`][1.7-alpineDockerfile]
+* [`1.8.0`, `1.8`, `1`, `latest`][1.8-Dockerfile]
+* [`1.8.0-stretch`, `1.8-stretch`, `1-stretch`, `stretch`][1.8-stretchDockerfile]
+* [`1.8.0-buster`, `1.8-buster`, `1-buster`, `buster`][1.8-busterDockerfile]
+* [`1.8.0-bullseye`, `1.8-bullseye`, `1-bullseye`, `bullseye`][1.8-Dockerfile]
+* [`1.8.0-alpine`, `1.8-alpine `, `1-alpine `, `alpine`][1.8-alpineDockerfile]
 
 # What is TDLib (Telegram Database Library)?
 TDLib (Telegram Database Library) is a cross-platform, fully functional Telegram client. We designed it to help third-party developers create their own custom apps using the Telegram platform.
@@ -27,5 +29,7 @@ https://core.telegram.org/tdlib
 ## Alpine example
 https://github.com/wcsiu/telegram-client-demo
 
-[1.7-Dockerfile]: https://github.com/wcsiu/tdlib/blob/v1.7.0/1.7/buster/Dockerfile
-[1.7-alpineDockerfile]: https://github.com/wcsiu/tdlib/blob/v1.7.0/1.7/alpine/Dockerfile
+[1.8-Dockerfile]: https://github.com/wcsiu/tdlib/blob/v1.8.0/bullseye/Dockerfile
+[1.8-stretchDockerfile]: https://github.com/wcsiu/tdlib/blob/v1.8.0/stretch/Dockerfile
+[1.8-busterDockerfile]: https://github.com/wcsiu/tdlib/blob/v1.8.0/buster/Dockerfile
+[1.8-alpineDockerfile]: https://github.com/wcsiu/tdlib/blob/v1.8.0/alpine/Dockerfile

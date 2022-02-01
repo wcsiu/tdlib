@@ -1,0 +1,104 @@
+name: Build and release Docker images
+on:
+  push:
+    branches-ignore:
+      - '**'
+    tags:
+      - 'v*.*.*'
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      -
+        name: Docker meta - stretch
+        id: meta_stretch
+        uses: docker/metadata-action@v3
+        with:
+          images: wcsiu/tdlib
+          flavor: |
+            latest=false
+          tags: |
+            type=semver,pattern={{version}}-stretch
+            type=semver,pattern={{major}}.{{minor}}-stretch
+            type=semver,pattern={{major}}-stretch
+            type=semver,pattern=stretch
+      -
+        name: Docker meta - buster
+        id: meta_buster
+        uses: docker/metadata-action@v3
+        with:
+          images: wcsiu/tdlib
+          flavor: |
+            latest=false
+          tags: |
+            type=semver,pattern={{version}}-buster
+            type=semver,pattern={{major}}.{{minor}}-buster
+            type=semver,pattern={{major}}-buster
+            type=semver,pattern=buster
+      -
+        name: Docker meta - bullseye
+        id: meta_bullseye
+        uses: docker/metadata-action@v3
+        with:
+          images: wcsiu/tdlib
+          tags: |
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
+            type=semver,pattern={{version}}-bullseye
+            type=semver,pattern={{major}}.{{minor}}-bullseye
+            type=semver,pattern={{major}}-bullseye
+            type=semver,pattern=bullseye
+      -
+        name: Docker meta - alpine
+        id: meta_alpine
+        uses: docker/metadata-action@v3
+        with:
+          images: wcsiu/tdlib
+          flavor: |
+            latest=false
+          tags: |
+            type=semver,pattern={{version}}-alpine
+            type=semver,pattern={{major}}.{{minor}}-alpine
+            type=semver,pattern={{major}}-alpine
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      -
+        name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      -
+        name: Build and push - stretch
+        uses: docker/build-push-action@v2
+        with:
+          context: ./stretch
+          push: true
+          tags: ${{ steps.meta_stretch.outputs.tags }}
+      -
+        name: Build and push - buster
+        uses: docker/build-push-action@v2
+        with:
+          context: ./buster
+          push: true
+          tags: ${{ steps.meta_buster.outputs.tags }}
+      -
+        name: Build and push - bullseye
+        uses: docker/build-push-action@v2
+        with:
+          context: ./bullseye
+          push: true
+          tags: ${{ steps.meta_bullseye.outputs.tags }}
+      -
+        name: Build and push - alpine
+        uses: docker/build-push-action@v2
+        with:
+          context: ./alpine
+          push: true
+          tags: ${{ steps.meta_alpine.outputs.tags }}

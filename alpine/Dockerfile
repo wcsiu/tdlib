@@ -1,4 +1,4 @@
-FROM alpine:3.12
+FROM alpine:3.15
 
 WORKDIR /
 
@@ -18,7 +18,7 @@ RUN apk add --no-cache --virtual .build-deps \
 
 RUN git clone https://github.com/tdlib/td.git && \
     cd td && \
-    git checkout v1.7.0 && \
+    git checkout v1.8.0 && \
     mkdir build && \
     cd build && \
     cmake -DCMAKE_BUILD_TYPE=Release .. && \
